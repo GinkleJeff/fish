@@ -52,15 +52,19 @@
   const fishVideo = document.getElementById('fishVideo');
 
   enterScreen.addEventListener('click', () => {
-    // Hide the click screen
+    // Hide click-to-enter
     enterScreen.style.display = 'none';
-    // Show the video
+    // Show video
     fishVideo.style.display = 'block';
-    // Allow sound and autoplay
+    // Unmute and play immediately (user interaction triggers sound)
     fishVideo.muted = false;
-    fishVideo.play();
+    fishVideo.play().catch(err => {
+      console.warn("Autoplay failed:", err);
+    });
   });
 </script>
 
 </body>
 </html>
+
+
